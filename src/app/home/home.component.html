@@ -1,0 +1,80 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <h1 class="text-center">FORM</h1>
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="column">
+
+            <form [formGroup]="employeeFormData" (ngSubmit)="submitForm()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Age" formControlName="age">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Salary" formControlName="salary">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+
+        <div class="column mt-5">
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">NAME</th>
+                    <th scope="col">AGE</th>
+                    <th scope="col">SALARY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{userObj.name}}</td>
+                    <td>{{userObj.age}}</td>
+                    <td>{{userObj.salary}}</td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+
+    <div class="row mt-5 text-center mb-5">
+
+        <h1>EMPLOYEE DATA</h1>
+
+    </div>
+
+    <div class="row">
+        <div class="column">
+
+            <table class="table table-bordered border-primary text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">EMPLOYEE NAME</th>
+                    <th scope="col">UPDATE</th>
+                    <th scope="col">DELETE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of allEmployees">
+                    <td scope="row">{{item.id}}</td>
+                    <td><a routerLink="employee/{{item.id}}">{{item.employee_name}}</a></td>
+                    <td><a routerLink="update/{{item.id}}"><i class="ri-edit-box-line" style="font-size: 24px;"></i></a></td>
+                    <td (click)="delete(item.id)"><i class="ri-delete-bin-5-line" style="font-size: 24px;color: red;"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+
+</div>
